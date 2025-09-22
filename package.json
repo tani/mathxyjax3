@@ -17,8 +17,10 @@
   "version": "0.1.0",
   "description": "MathJax3 with XyJaX-v3 for server side rendering",
   "main": "dist/index.js",
+  "types": "index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
