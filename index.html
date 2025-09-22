@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathXyJax3 Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .example {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .latex-code {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .rendered {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .description {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MathXyJax3 Demo</h1>
+        <p style="text-align: center; color: #7f8c8d;">
+            Server-side rendering of mathematical expressions and xy-pic diagrams
+        </p>
+
+        <h2>Quick Start Examples</h2>
+        
+        <div class="example">
+            <div class="description">Simple math expression</div>
+            <div class="latex-code">E = mc^2</div>
+            <div class="rendered" id="example1"></div>
+        </div>
+
+        <div class="example">
+            <div class="description">XY-pic diagram</div>
+            <div class="latex-code">\xymatrix{A \ar[r] & B}</div>
+            <div class="rendered" id="example2"></div>
+        </div>
+
+        <h2>Basic Mathematics</h2>
+
+        <div class="example">
+            <div class="description">Fractions</div>
+            <div class="latex-code">\frac{a}{b}</div>
+            <div class="rendered" id="fraction"></div>
+        </div>
+
+        <div class="example">
+            <div class="description">Integrals</div>
+            <div class="latex-code">\int_{-\infty}^{\infty} e^{-x^2} dx</div>
+            <div class="rendered" id="integral"></div>
+        </div>
+
+        <div class="example">
+            <div class="description">Matrices</div>
+            <div class="latex-code">\begin{pmatrix} a & b \\ c & d \end{pmatrix}</div>
+            <div class="rendered" id="matrix"></div>
+        </div>
+
+        <h2>XY-pic Diagrams</h2>
+
+        <div class="example">
+            <div class="description">Simple commutative diagram</div>
+            <div class="latex-code">\xymatrix{A \ar[r]^f \ar[d]_g & B \ar[d]^h \\ C \ar[r]_k & D}</div>
+            <div class="rendered" id="commutative"></div>
+        </div>
+
+        <div class="example">
+            <div class="description">Category theory</div>
+            <div class="latex-code">\xymatrix@1{\bullet \ar@/^/[rr]^{f} \ar@/_/[rr]_{g} && \bullet}</div>
+            <div class="rendered" id="category"></div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by <strong>MathXyJax3</strong> - MathJax 3 with XyJax-v3</p>
+            <p>For more examples and documentation, visit the <a href="https://github.com/tani/mathxyjax3">GitHub repository</a></p>
+        </div>
+    </div>
+
+    <script type="module">
+        import * as mathjax from './dist/index.js';
+
+        function renderExamples() {
+            try {
+                // Quick Start Examples
+                const example1 = mathjax.tex2svg('E = mc^2');
+                document.getElementById('example1').innerHTML = example1;
+
+                const example2 = mathjax.tex2svg('\\xymatrix{A \\ar[r] & B}');
+                document.getElementById('example2').innerHTML = example2;
+
+                // Basic Mathematics
+                const fraction = mathjax.tex2svg('\\frac{a}{b}');
+                document.getElementById('fraction').innerHTML = fraction;
+
+                const integral = mathjax.tex2svg('\\int_{-\\infty}^{\\infty} e^{-x^2} dx');
+                document.getElementById('integral').innerHTML = integral;
+
+                const matrix = mathjax.tex2svg('\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}');
+                document.getElementById('matrix').innerHTML = matrix;
+
+                // XY-pic Diagrams
+                const commutative = mathjax.tex2svg('\\xymatrix{A \\ar[r]^f \\ar[d]_g & B \\ar[d]^h \\\\ C \\ar[r]_k & D}');
+                document.getElementById('commutative').innerHTML = commutative;
+
+                const category = mathjax.tex2svg('\\xymatrix@1{\\bullet \\ar@/^/[rr]^{f} \\ar@/_/[rr]_{g} && \\bullet}');
+                document.getElementById('category').innerHTML = category;
+
+            } catch (error) {
+                console.error('Error rendering mathematics:', error);
+                document.querySelectorAll('.rendered').forEach(el => {
+                    el.innerHTML = '<span style="color: red;">Error loading mathematics</span>';
+                });
+            }
+        }
+
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderExamples);
+        } else {
+            renderExamples();
+        }
+    </script>
+</body>
+</html>
