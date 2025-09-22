@@ -26,11 +26,11 @@ npm install mathxyjax3
 import mathjax from 'mathxyjax3';
 
 // Render a simple math expression
-const mathSvg = await mathjax.tex2svg('E = mc^2');
+const mathSvg = mathjax.tex2svg('E = mc^2');
 console.log(mathSvg.outerHTML);
 
 // Render xy-pic diagram
-const xyDiagram = await mathjax.tex2svg('\\xymatrix{A \\ar[r] & B}');
+const xyDiagram = mathjax.tex2svg('\\xymatrix{A \\ar[r] & B}');
 console.log(xyDiagram.outerHTML);
 ```
 
@@ -45,11 +45,11 @@ Converts TeX/LaTeX input to SVG output.
 - `options` (object, optional): Rendering options
 
 #### Returns:
-- SVG DOM element
+- SVG string
 
 #### Example:
 ```javascript
-const svg = await mathjax.tex2svg('\\frac{1}{2}', {
+const svg = mathjax.tex2svg('\\frac{1}{2}', {
   display: true,
   em: 16,
   ex: 8
@@ -72,25 +72,27 @@ const svg = await mathjax.tex2svg('\\frac{1}{2}', {
 
 ## Examples
 
+https://mathxyjax3.pages.dev/
+
 ### Basic Mathematics
 ```javascript
 // Fractions
-await mathjax.tex2svg('\\frac{a}{b}');
+mathjax.tex2svg('\\frac{a}{b}');
 
 // Integrals
-await mathjax.tex2svg('\\int_{-\\infty}^{\\infty} e^{-x^2} dx');
+mathjax.tex2svg('\\int_{-\\infty}^{\\infty} e^{-x^2} dx');
 
 // Matrices
-await mathjax.tex2svg('\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}');
+mathjax.tex2svg('\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}');
 ```
 
 ### XY-pic Diagrams
 ```javascript
 // Simple commutative diagram
-await mathjax.tex2svg('\\xymatrix{A \\ar[r]^f \\ar[d]_g & B \\ar[d]^h \\\\ C \\ar[r]_k & D}');
+mathjax.tex2svg('\\xymatrix{A \\ar[r]^f \\ar[d]_g & B \\ar[d]^h \\\\ C \\ar[r]_k & D}');
 
 // Category theory
-await mathjax.tex2svg('\\xymatrix@1{\\bullet \\ar@/^/[rr]^{f} \\ar@/_/[rr]_{g} && \\bullet}');
+mathjax.tex2svg('\\xymatrix@1{\\bullet \\ar@/^/[rr]^{f} \\ar@/_/[rr]_{g} && \\bullet}');
 ```
 
 ## Dependencies
