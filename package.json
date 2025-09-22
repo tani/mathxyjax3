@@ -17,6 +17,9 @@
   "version": "0.1.0",
   "description": "MathJax3 with XyJaX-v3 for server side rendering",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tani/mathxyjax3.git"
