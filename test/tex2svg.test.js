@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { tex2svg } from '../src/index.js';
+import { tex2svg } from '../dist/index.js';
 
 describe('tex2svg', () => {
   test('renders simple math expression', () => {
