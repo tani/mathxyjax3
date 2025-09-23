@@ -1,4 +1,4 @@
-# mathxyjax3
+# MathXyJax3
 
 [![CI](https://github.com/tani/mathxyjax3/actions/workflows/ci.yml/badge.svg)](https://github.com/tani/mathxyjax3/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/mathxyjax3.svg)](https://badge.fury.io/js/mathxyjax3)
