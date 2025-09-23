@@ -15,7 +15,7 @@
     "xmldom-sre": "^0.9.0-beta.7",
     "xyjax": "github:sonoisa/XyJax-v3"
   },
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "MathJax3 with XyJaX-v3 for server side rendering",
   "main": "dist/index.js",
   "types": "index.d.ts",
