@@ -50,7 +50,7 @@ export function tex2svgHtml(math = "", options = {}) {
   const html = adaptor.outerHTML(node);
   const id = 'mjx-'+Math.random().toString(16).substring(8)
   return `
-    <div id=${id}>
+    <div id="${id}">
       <style>
       #${id}{
         display:contents;
