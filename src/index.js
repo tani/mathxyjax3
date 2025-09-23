@@ -49,5 +49,20 @@ export function tex2svg(math = "", options = {}) {
   const style = adaptor.textContent(globalThis.MathJax.svgStylesheet());
   const html = adaptor.outerHTML(node);
   const id = 'mjx-'+Math.random().toString(16).substring(8)
-  return `<div id=${id}><style>#${id}{display:contents;${style}}</style>${html}</div>`;
+  return `
+    <div id=${id}>
+      <style>
+      #${id}{
+        display:contents;
+        mjx-assistive-mml {
+          user-select: text !important;
+          clip: auto !important;
+          color: rgba(0,0,0,0);
+        }
+        ${style}
+      }
+      </style>
+      ${html}
+    </div>
+  `;
 }
