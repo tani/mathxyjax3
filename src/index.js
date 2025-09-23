@@ -17,11 +17,6 @@ const lazyModules = {
 const lazyRequire = name => lazyModules[name]();
 
 globalThis.MathJax = {
-  options: {
-    renderActions: {
-      assistiveMML: []
-    }
-  },
   loader: {
     source: {},
     require: lazyRequire,
@@ -38,7 +33,7 @@ globalThis.MathJax = {
     packages: { "[+]": [ "xypic"] },
   },
   svg: {
-    fontCache: "none",
+    fontCache: "local",
   },
   startup: {
     typeset: false,
@@ -51,7 +46,8 @@ await globalThis.MathJax.startup?.promise;
 export function tex2svg(math = "", options = {}) {
   const node = globalThis.MathJax.tex2svg(math, { display: true, ... options });
   const adaptor = globalThis.MathJax.startup.adaptor;
-  const style = adaptor.outerHTML(globalThis.MathJax.svgStylesheet());
+  const style = adaptor.textContent(globalThis.MathJax.svgStylesheet());
   const html = adaptor.outerHTML(node);
-  return html.replace('</mjx-container>', style+'</mjx-container>')
+  const id = 'mjx-'+Math.random().toString(16).substring(8)
+  return `<div id=${id}><style>#${id}{display:contents;${style}}</style>${html}</div>`;
 }
