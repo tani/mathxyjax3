@@ -138,27 +138,27 @@
         function renderExamples() {
             try {
                 // Quick Start Examples
-                const example1 = mathjax.tex2svg('E = mc^2');
+                const example1 = mathjax.tex2svgHtml('E = mc^2');
                 document.getElementById('example1').innerHTML = example1;
 
-                const example2 = mathjax.tex2svg('\\xymatrix{A \\ar[r] & B}');
+                const example2 = mathjax.tex2svgHtml('\\xymatrix{A \\ar[r] & B}');
                 document.getElementById('example2').innerHTML = example2;
 
                 // Basic Mathematics
-                const fraction = mathjax.tex2svg('\\frac{a}{b}');
+                const fraction = mathjax.tex2svgHtml('\\frac{a}{b}');
                 document.getElementById('fraction').innerHTML = fraction;
 
-                const integral = mathjax.tex2svg('\\int_{-\\infty}^{\\infty} e^{-x^2} dx');
+                const integral = mathjax.tex2svgHtml('\\int_{-\\infty}^{\\infty} e^{-x^2} dx');
                 document.getElementById('integral').innerHTML = integral;
 
-                const matrix = mathjax.tex2svg('\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}');
+                const matrix = mathjax.tex2svgHtml('\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}');
                 document.getElementById('matrix').innerHTML = matrix;
 
                 // XY-pic Diagrams
-                const commutative = mathjax.tex2svg('\\xymatrix{A \\ar[r]^f \\ar[d]_g & B \\ar[d]^h \\\\ C \\ar[r]_k & D}');
+                const commutative = mathjax.tex2svgHtml('\\xymatrix{A \\ar[r]^f \\ar[d]_g & B \\ar[d]^h \\\\ C \\ar[r]_k & D}');
                 document.getElementById('commutative').innerHTML = commutative;
 
-                const category = mathjax.tex2svg('\\xymatrix@1{\\bullet \\ar@/^/[rr]^{f} \\ar@/_/[rr]_{g} && \\bullet}');
+                const category = mathjax.tex2svgHtml('\\xymatrix@1{\\bullet \\ar@/^/[rr]^{f} \\ar@/_/[rr]_{g} && \\bullet}');
                 document.getElementById('category').innerHTML = category;
 
             } catch (error) {

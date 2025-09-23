@@ -43,7 +43,7 @@ globalThis.MathJax = {
 await import("mathjax/es5/tex-svg-full.js");
 await globalThis.MathJax.startup?.promise;
 
-export function tex2svg(math = "", options = {}) {
+export function tex2svgHtml(math = "", options = {}) {
   const node = globalThis.MathJax.tex2svg(math, { display: true, ... options });
   const adaptor = globalThis.MathJax.startup.adaptor;
   const style = adaptor.textContent(globalThis.MathJax.svgStylesheet());
