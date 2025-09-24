@@ -33,7 +33,7 @@ globalThis.MathJax = {
     packages: { "[+]": [ "xypic"] },
   },
   svg: {
-    fontCache: "local",
+    fontCache: "none",
   },
   startup: {
     typeset: false,
