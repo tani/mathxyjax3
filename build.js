@@ -31,6 +31,10 @@ await esbuild.build({
           find: /typeof document/g,
           replacement: '"undefined"',
         },
+        {
+          find: /versionWarnings:!0/g,
+          replacement: 'versionWarnings:!1',
+        },
       ]
     })
   ]
