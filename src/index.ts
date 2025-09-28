@@ -1,18 +1,11 @@
-type ModuleMap = {
-  'xmldom-sre': typeof import('@xmldom/xmldom');
-  'wicked-good-xpath': typeof import('wicked-good-xpath');
-  commander: Record<string, never>;
-  fs: Record<string, never>;
-};
-
 const modules = {
   'xmldom-sre': await import('@xmldom/xmldom'),
   'wicked-good-xpath': await import('wicked-good-xpath'),
   commander: {},
   fs: {},
-} satisfies ModuleMap;
+} as const;
 
-const require = <Key extends keyof ModuleMap>(name: Key) => modules[name];
+const require = <Key extends keyof typeof modules>(name: Key) => modules[name];
 
 declare global {
   // MathJax attaches a custom loader that expects a CommonJS-like require.
@@ -25,7 +18,7 @@ globalThis.MathJax_require = require;
 const lazyModules = {
   'mathjax/es5/adaptors/liteDOM.js': () => import('mathjax/es5/adaptors/liteDOM.js'),
   'xyjax/build/xypic.js': () => import('xyjax/build/xypic.js'),
-} satisfies Record<string, () => Promise<unknown>>;
+} as const;
 
 const lazyRequire = (name: keyof typeof lazyModules) => lazyModules[name]();
 
