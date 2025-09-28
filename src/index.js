@@ -1,5 +1,5 @@
 const modules = {
-  "xmldom-sre": await import("xmldom-sre"),
+  "xmldom-sre": await import("@xmldom/xmldom"),
   "wicked-good-xpath": await import("wicked-good-xpath"),
   "commander": {},
   "fs": {},
