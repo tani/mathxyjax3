@@ -2,14 +2,14 @@ import { defineConfig } from 'tsdown';
 import Replace from 'unplugin-replace/rollup';
 
 export default defineConfig({
-  entry: ['src/index.js'],
+  entry: ['src/index.ts'],
   format: 'esm',
   platform: 'browser',
   target: 'es2024',
   minify: true,
   sourcemap: true,
   outDir: 'dist',
-  dts: false,
+  dts: true,
   banner: {
     js: 'const global = globalThis; const process = { env: {} };',
   },
