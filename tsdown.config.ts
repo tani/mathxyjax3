@@ -1,23 +1,24 @@
-import esbuild from 'esbuild';
-import replace from 'unplugin-replace/esbuild';
+import { defineConfig } from 'tsdown';
+import Replace from 'unplugin-replace/rollup';
 
-await esbuild.build({
-  entryPoints: ['src/index.js'],
-  bundle: true,
+export default defineConfig({
+  entry: ['src/index.js'],
   format: 'esm',
   platform: 'browser',
   target: 'es2024',
-  minify: false,
+  minify: true,
   sourcemap: true,
-  outdir: 'dist',
-  external: [],
-  banner: { js: 'const global = globalThis; const process = { env: {} };' },
+  outDir: 'dist',
+  dts: false,
+  banner: {
+    js: 'const global = globalThis; const process = { env: {} };',
+  },
   plugins: [
-    replace({
+    Replace({
       values: [
         {
           find: /eval\("require"\)/g,
-          replacement: "globalThis.MathJax_require",
+          replacement: 'globalThis.MathJax_require',
         },
         {
           find: /typeof process/g,
@@ -35,7 +36,7 @@ await esbuild.build({
           find: /versionWarnings:!0/g,
           replacement: 'versionWarnings:!1',
         },
-      ]
-    })
-  ]
+      ],
+    }),
+  ],
 });
