@@ -48,6 +48,7 @@ globalThis.MathJax = {
 
 await import('mathjax/es5/tex-svg-full.js');
 await globalThis.MathJax.startup?.promise;
+const { hash } = await import('node:crypto');
 
 export interface Tex2SvgHtmlOptions {
   display?: boolean;
@@ -59,7 +60,7 @@ export function tex2svgHtml(math = '', options: Tex2SvgHtmlOptions = {}) {
   const adaptor = globalThis.MathJax.startup.adaptor;
   const style = adaptor.textContent(globalThis.MathJax.svgStylesheet());
   const html = adaptor.outerHTML(node);
-  const id = `mjx-${Math.random().toString(16).substring(8)}`;
+  const id = `mjx-${hash('sha256', math, 'hex').substring(0, 8)}`;
   return `
     <span id="${id}">
       <style>
